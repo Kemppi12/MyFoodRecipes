@@ -1,31 +1,42 @@
+import { useState , useEffect } from "react";
+//import SearchBar from "./SearchBar";
+import RecipeList from "../components/RecipeList";
+//import { Card } from 'react-bootstrap'
+//import { useAuth } from "../contexts/AuthContext";
+import MainNavigation from "../components/MainNavigation";
+//import { Switch , Route } from 'react-router-dom'
+//import SearchRecipesNew from "./SearchRecipesNew";
+//import { useHistory } from 'react-router-dom'
 
+const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='
 
-import { useEffect, useState } from 'react';
-import RecipeList from './RecipeList';
+const Homepage = () => {
 
-
-const FetchRandomRecipe = () => {
-
+  /*function handleLogout(){
+  }*/
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('')
+  //const history = useHistory()
+  //const {currentUser} = useAuth()
 
   useEffect(() => {}, [recipes]);
 
   const fetchRecipesHandler = async () => {
 
+    const url = apiUrl + query;
+
     try{
       setLoading(true);
-      const response = await fetch ('https://themealdb.com/api/json/v1/1/search.php?s=Arrabiata');
+      const response = await fetch (url);
       console.log(response)
 
       if(!response.ok){
         throw new Error("Something went wrong!");
       }
 
-      const data = await response.json();
-      
-      console.log(data)
+      const data = await response.json();   
 
       const transformedRecipes = data.meals.map((recipeData) => {
         return {
@@ -37,7 +48,6 @@ const FetchRandomRecipe = () => {
           image:recipeData.strMealThumb,
         }
       })
-
       setRecipes(transformedRecipes);
       setLoading(false);
     }catch (error){
@@ -45,6 +55,10 @@ const FetchRandomRecipe = () => {
       setLoading(false);
     }
   }; 
+
+  useEffect(() => {
+    fetchRecipesHandler();
+  }, []);
 
 
   let content;
@@ -57,27 +71,14 @@ const FetchRandomRecipe = () => {
     content = <RecipeList recipes={recipes}/>;
   }
 
-
   return (
-    <>
-      <section>
-        <button onClick={fetchRecipesHandler}>
-        {loading ? 
-        <>Loading...</> :
-        <>Fetch Recipe</>}
-        </button>
-      </section>
-      <section>
+    <div>
+      <MainNavigation />          
+      <div>
         {content}
-      </section>
-    </>
-  );
+      </div>      
+    </div>
+  )
+  }; 
 
-  /*const addRecipeHandler = (recipe) => {
-    console.log(recipe);
-  }*/
-
-
-};
-
-export default FetchRandomRecipe;
+  export default Homepage;
