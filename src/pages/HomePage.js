@@ -1,25 +1,16 @@
 import { useState , useEffect } from "react";
-//import SearchBar from "./SearchBar";
 import RecipeList from "../components/RecipeList";
-//import { Card } from 'react-bootstrap'
-//import { useAuth } from "../contexts/AuthContext";
 import MainNavigation from "../components/MainNavigation";
-//import { Switch , Route } from 'react-router-dom'
-//import SearchRecipesNew from "./SearchRecipesNew";
-//import { useHistory } from 'react-router-dom'
+
 
 const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='
 
 const Homepage = () => {
 
-  /*function handleLogout(){
-  }*/
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('')
-  //const history = useHistory()
-  //const {currentUser} = useAuth()
 
   useEffect(() => {}, [recipes]);
 
