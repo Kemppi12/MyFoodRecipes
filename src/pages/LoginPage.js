@@ -6,9 +6,11 @@ import { Form ,
   Card, 
   Alert, 
   Container } from 'react-bootstrap'
-import { Link,
-  useHistory } from 'react-router-dom'
+import { Link
+   } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext' 
+import { useHistory } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const LogIn = () => {
@@ -33,7 +35,6 @@ const LogIn = () => {
             setLoading(false)
         }
     }
-
 
     return (
       <Container
@@ -68,8 +69,7 @@ const LogIn = () => {
           </div>         
         </div>
         </Container>
-    )
-    
+    )    
 };
 
 export default LogIn;

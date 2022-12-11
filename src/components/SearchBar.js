@@ -1,6 +1,4 @@
-import './Recipe.css';
 import React from 'react';
-
 
 const SearchBar = (props) => {
   return (
@@ -17,9 +15,7 @@ const SearchBar = (props) => {
         className='btn'
         value='Search'
         />
-    </form>
-
-    
+    </form>   
   );
 };
 

@@ -1,5 +1,5 @@
-import { React, 
-  useRef , 
+import  React, 
+  {useRef , 
   useState } from 'react'
 import { Form,
   Button,
@@ -8,6 +8,7 @@ import { Form,
   Container} from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link , useHistory } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
  
 
 const Signup = () => {
