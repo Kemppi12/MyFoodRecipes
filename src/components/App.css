@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-color: aqua;
+    font-family: 'Poppins', sans-serif;
+}
+
+.recipe-list {
+    padding: 0 10px 30px 10px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.header {
+    background-color: rgba(15, 15, 15, 0.822);
+    color: orangered;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 30px 100px;
+    grid-column: 1/-1; 
+}
+
+.header h1 {
+    font-weight: 600;
+    font-size: 50px;
+    letter-spacing: 7px;
+    margin-bottom: 10px;
+    text-align: left;  
+}
+
+.header h2 {
+
+    font-weight: 200;
+    font-size: 27px;
+    font-weight: bold;
+    margin-left: 3rem;
+}
+
+.header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+
+}
+
+.header button {
+    background-color: orangered;
+    border: none;
+    color: azure;
+    font-size: 30px;
+    font-weight: 600px;
+    border-radius: 5px;
+    width: 120px;  
+}
+
+.header button:hover,
+.header button:active,
+.header button.active {
+  color: white;
+}
+
+.header a {
+    font-weight: 400;
+    font-size: 30px;
+    text-align:right;
+    text-decoration: none;
+    text-emphasis-color: black;
+    color: orangered; 
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: white;
+}
+
+
+.recipe {
+    display: grid;
+    position: relative;
+    grid-template-rows: auto 1fr;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,3);
+}
+
+.recipe-image {
+    position: relative;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+.h1 {
+    grid-column: 1/-1;
+    text-align: center;
+}
+
+.recipe-details {
+    padding: 20px 10px;
+    display: grid;
+    grid-template-rows:auto 1fr 50px;
+    grid-row-gap: 15px;
+}
+
+.recipe-details-sub {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.recipe-details-sub h4 {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.recipe-details-sub h5 {
+    font-weight: 600px;
+    font-size: 40px;
+    color: rgb(255, 0, 128);
+}
+
+.recipe-details a {
+    color: orangered;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 600;
+    align-self: stretch;
+}
+
+.recipe-details button {
+    background-color: orangered;
+    border: none;
+    color: azure;
+    font-size: 26px;
+    font-weight: 600px;
+    border-radius: 5px;
+    width: 180px;
+}
