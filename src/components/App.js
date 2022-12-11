@@ -1,11 +1,3 @@
-/*import HomePage from "./HomePage";
-import { Route, Switch } from "react-router-dom";
-import MainNavigation from "./MainNavigation";
-import React from "react";
-import SignUp from "./SignUp";
-import { Container } from "react-bootstrap";
-import { AuthProvider } from "./contexts/AuthContext";*/
-//import { Container } from "react-bootstrap";
 import React from "react";
 import Signup from "../pages/SignupPage";
 import { AuthProvider } from "../contexts/AuthContext";
@@ -17,7 +9,7 @@ import Login from "../pages/LoginPage";
 import PrivateRoute from "./PrivateRoute";
 import SavedRecipesPage from "../pages/SavedRecipesPage";
 import ForgotPassword from "../pages/ForgotPassword";
-//import PrivateRoutes from "./PrivateRoutes";
+
 
 
 function App () {

@@ -30,7 +30,7 @@ const MainNavigation = () => {
 
   return (
     <header className="header">
-      <h1>MyRecipesApp</h1>
+      <h1>MyFoodRecipes</h1>
       <nav>
         <ul> 
           <h2>
