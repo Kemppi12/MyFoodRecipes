@@ -1,6 +1,9 @@
 import { useState , useEffect } from "react";
 import RecipeList from "../components/RecipeList";
 import MainNavigation from "../components/MainNavigation";
+//import SaveModal from "../components/SaveModal";
+//import { Modal } from 'react-bootstrap'
+//import Backdrop from "../components/Backdrop";
 
 
 const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='
@@ -11,6 +14,7 @@ const Homepage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('')
+  //const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {}, [recipes]);
 
@@ -45,7 +49,9 @@ const Homepage = () => {
       setError(error.message);
       setLoading(false);
     }
+
   }; 
+
 
   useEffect(() => {
     fetchRecipesHandler();
@@ -64,10 +70,10 @@ const Homepage = () => {
 
   return (
     <div>
-      <MainNavigation />          
+      <MainNavigation />        
       <div>
-        {content}
-      </div>      
+        {content}     
+      </div>    
     </div>
   )
   }; 

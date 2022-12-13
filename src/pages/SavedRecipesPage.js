@@ -3,7 +3,7 @@ import RecipeList from "../components/RecipeList";
 import MainNavigation from "../components/MainNavigation";
 
 
-const dbUrl = 'https://yourfoodrecipes-bc17a-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
+const dbUrl = 'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
 
 const SavedRecipesPage = () => {
 
