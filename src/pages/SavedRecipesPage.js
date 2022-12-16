@@ -1,17 +1,21 @@
+import "../components/App.css";
 import { useState , useEffect } from "react";
+import { useAuth } from '../contexts/AuthContext'
 import RecipeList from "../components/RecipeList";
 import MainNavigation from "../components/MainNavigation";
 
-
-const dbUrl = 'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
 
 const SavedRecipesPage = () => {
 
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { currentUser } = useAuth()
+ 
+  const userId = currentUser.uid;
 
-  useEffect(() => {}, [recipes]);
+  const dbUrl = 'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/' + userId + '/recipes.json'
+
 
   const fetchRecipesHandler = async () => {
 
@@ -27,30 +31,44 @@ const SavedRecipesPage = () => {
       }
 
       const data = await response.json();
-      
-      console.log(data)
 
       const fetchedRecipes = [];
 
-
-      for (const key in data) {
-        fetchedRecipes.push({
-          id: key,
-          name:data[key].name,
-          category:data[key].category,
-          area:data[key].area,
-          instructions:data[key].instructions,
-          image:data[key].image,
-        });
+      for (const userId in data){
+        fetchedRecipes.push({ 
+          id: userId,
+          idMeal: data[userId].idMeal,
+          name: data[userId].name,
+          category:data[userId].category,
+          area:data[userId].area,
+          instructions:data[userId].instructions,
+          image:data[userId].image,
+        })
       }
 
       setRecipes(fetchedRecipes);
       setLoading(false);
+      
     }catch (error){
       setError(error.message);
       setLoading(false);
-    }
+    }  
   }; 
+
+
+  const deleteRecipeHandler = async () => {
+    
+    const response = await fetch(  
+        'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/' + userId + '/recipes/.json',
+        {
+          method:'DELETE',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+        });
+        
+      await response.json();
+    };
 
   useEffect(() => {
     fetchRecipesHandler();
@@ -63,20 +81,21 @@ const SavedRecipesPage = () => {
   }else if(error){
     content = <p>{error}</p>;
   }else {
-    content = <RecipeList recipes={recipes}/>;
+    content = <RecipeList recipes={recipes}/>
   }
   
   return (
     <div>
-      <MainNavigation />          
-      <div className="recipe-list">
+      <MainNavigation />   
+      <button className='search-btn' onClick={deleteRecipeHandler}>
+        <>Delete All Recipes</>
+      </button>       
+      <div>
         {content}
       </div>      
     </div>
-  )
-  
+  )  
   }; 
+
   export default SavedRecipesPage;
-  
-  
   

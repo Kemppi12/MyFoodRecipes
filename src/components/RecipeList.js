@@ -1,5 +1,5 @@
 import Recipe from "./Recipe";
-//import { useState , useEffect } from "react";
+
 
 const RecipeList = (props) => {
   return (
@@ -7,6 +7,7 @@ const RecipeList = (props) => {
       {props.recipes.map((recipe) => (
         <Recipe
           key={recipe.id}
+          idMeal={recipe.idMeal}
           name={recipe.name}
           category={recipe.category}
           area={recipe.area}

@@ -1,9 +1,8 @@
+import "../components/App.css";
 import { useState , useEffect } from "react";
 import RecipeList from "../components/RecipeList";
 import MainNavigation from "../components/MainNavigation";
-//import SaveModal from "../components/SaveModal";
-//import { Modal } from 'react-bootstrap'
-//import Backdrop from "../components/Backdrop";
+import SearchBar from "../components/SearchBar";
 
 
 const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='
@@ -14,9 +13,6 @@ const Homepage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('')
-  //const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {}, [recipes]);
 
   const fetchRecipesHandler = async () => {
 
@@ -35,7 +31,8 @@ const Homepage = () => {
 
       const transformedRecipes = data.meals.map((recipeData) => {
         return {
-          id:recipeData.idMeal, 
+          id:recipeData.idMeal,
+          idMeal:recipeData.idMeal, 
           name:recipeData.strMeal,
           category:recipeData.strCategory,
           area:recipeData.strArea,
@@ -45,6 +42,7 @@ const Homepage = () => {
       })
       setRecipes(transformedRecipes);
       setLoading(false);
+      console.log(data)
     }catch (error){
       setError(error.message);
       setLoading(false);
@@ -52,11 +50,14 @@ const Homepage = () => {
 
   }; 
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    fetchRecipesHandler()
+  };
 
   useEffect(() => {
     fetchRecipesHandler();
-  }, []);
-
+  },[]);
 
   let content;
 
@@ -70,7 +71,13 @@ const Homepage = () => {
 
   return (
     <div>
-      <MainNavigation />        
+      <MainNavigation />
+      <SearchBar
+        handleSubmit={handleSubmit}
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+        loading={loading}
+      />       
       <div>
         {content}     
       </div>    

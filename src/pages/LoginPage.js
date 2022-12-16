@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React, 
 { useRef,
   useState } from 'react'
@@ -10,7 +11,6 @@ import { Link
    } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext' 
 import { useHistory } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const LogIn = () => {
@@ -45,6 +45,7 @@ const LogIn = () => {
         <div className='w-100' style={{ maxWidth: '400px'}}>
           <Card>
             <Card.Body>
+            <h1 className='text-center'>MyFoodRecipes</h1>
                 <h2 className='text-center mb-4'>Log In</h2>            
                 {error && <Alert variant= 'danger'>{error}</Alert>}                
                 <Form onSubmit={handleSubmit}>
