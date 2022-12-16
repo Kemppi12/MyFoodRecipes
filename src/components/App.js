@@ -11,7 +11,6 @@ import SavedRecipesPage from "../pages/SavedRecipesPage";
 import ForgotPassword from "../pages/ForgotPassword";
 
 
-
 function App () {
 
   return (     
@@ -19,7 +18,6 @@ function App () {
         <Router>
         <AuthProvider>
           <Switch>
-            {/*<Route path="/saved-recipes" element={<PrivateRoute><SavedRecipesPage/></PrivateRoute>}></Route>*/}
             <PrivateRoute exact path='/' component={HomePage} />
             <PrivateRoute path= '/saved-recipes' component={SavedRecipesPage} />
             <Route path='/signup' component={Signup} />
@@ -33,32 +31,3 @@ function App () {
 };
 
 export default App;
-
-// React-router-dom VERSION 6 SYNTAX
-
-  /*return(
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route element={<PrivateRoutes/>}>
-            <Route element={<HomePage/>} path='/' exact/>
-            <Route element={<SavedRecipesPage/>} path='/saved-recipes'/>
-            <Route element={<Signup/>} path='/' exact/>
-            <Route element={<Login/>} path='/' exact/>
-            <Route element={<ForgotPassword/>} path='/' exact/>
-            <Route element={<SettingsPage/>} path='/' exact/>
-            <Route element={<UpdateProfile/>} path='/' exact/>
-            <Route element={<HomePage/>} path='/' exact/>
-            <Route element={<HomePage/>} path='/' exact/>
-          </Route>
-        </Routes>
-      </Router>
-    </div>
-  )*/
-
-/*className="d-flex 
-    align-items-center 
-    justify-content-center" 
-    style= {{minHeight:'100vh'}}
-    <div className="w-100" style= {{maxWidth:'400px'}}>*/
-

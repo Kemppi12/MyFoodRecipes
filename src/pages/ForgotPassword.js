@@ -42,6 +42,7 @@ const ForgotPassword = () => {
         <div className='w-100' style={{ maxWidth: '400px'}}>
           <Card>
             <Card.Body>
+            <h1 className='text-center'>MyFoodRecipes</h1>
                 <h2 className='text-center mb-4'>Password Reset</h2>            
                 {error && <Alert variant= 'danger'>{error}</Alert>} 
                 {message && <Alert variant= 'success'>{message}</Alert>}               
@@ -65,8 +66,7 @@ const ForgotPassword = () => {
           </div>         
         </div>
         </Container>
-    )
-    
+    )    
 };
 
 export default ForgotPassword;

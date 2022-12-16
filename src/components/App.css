@@ -12,7 +12,8 @@
 .recipe-list {
     padding: 0 10px 30px 10px;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 330px));
+    
 }
 
 .header {
@@ -21,8 +22,8 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
-    padding: 30px 100px;
+    margin-bottom: 20px;
+    padding: 10px 100px;
     grid-column: 1/-1; 
 }
 
@@ -137,11 +138,55 @@
     background-color: orangered;
     border: none;
     color: azure;
+    border: 1px solid black;
     font-size: 26px;
     font-weight: 600px;
     border-radius: 5px;
     width: 180px;
 }
+
+.search-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    ;
+}
+
+.search-input {
+    border: 1px solid orangered;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.search-input:focus {
+    outline: none;   
+}
+
+.search-form-control {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 400px;
+}
+
+.search-btn {
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: orangered;
+    color: azure;
+    border: 1px solid black;
+    margin: 0 1rem;
+    margin-bottom: 20px;
+}
+  
+.search-btn:hover {
+    background-color: orangered;
+    border-color: orangered;
+    border: 1px solid black;
+}
+  
 
 .modal {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -165,28 +210,3 @@
     top: 0;
     left: 0;
 }
-  
-.btn {
-    font: inherit;
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #800040;
-    color: white;
-    border: 1px solid #800040;
-    margin: 0 1rem;
-  }
-  
-  .btn:hover {
-    background-color: #9c1458;
-    border-color: #9c1458;
-  }
-  
-  .btn--alt {
-    background-color: transparent;
-    color: #800040;
-  }
-  
-  .btn--alt:hover {
-    background-color: #f8dae9;
-  }

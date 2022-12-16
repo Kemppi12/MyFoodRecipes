@@ -2,17 +2,19 @@ import React from 'react';
 
 const SearchBar = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form className='search-form' 
+      onSubmit={props.handleSubmit}>
         <input
         value={props.value}
         disabled={props.loading}
+        onChange={props.onChange}
         placeholder='Search Recipes'
-        className='form-control'
+        className='search-input'
         />
         <input
         disabled={props.loading || !props.value}
         type='submit'
-        className='btn'
+        className='search-btn'
         value='Search'
         />
     </form>   
