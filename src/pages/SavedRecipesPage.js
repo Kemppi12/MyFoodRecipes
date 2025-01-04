@@ -1,7 +1,7 @@
-import "../components/App.css";
+/*import "../components/App.css";
 import { useState , useEffect } from "react";
 import { useAuth } from '../contexts/AuthContext'
-import RecipeList from "../components/RecipeList";
+import RecipeList from "../components/MealList";
 import MainNavigation from "../components/MainNavigation";
 
 
@@ -11,7 +11,7 @@ const SavedRecipesPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuth()
- 
+
   const userId = currentUser.uid;
 
   const dbUrl = 'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/' + userId + '/recipes.json'
@@ -35,7 +35,7 @@ const SavedRecipesPage = () => {
       const fetchedRecipes = [];
 
       for (const userId in data){
-        fetchedRecipes.push({ 
+        fetchedRecipes.push({
           id: userId,
           idMeal: data[userId].idMeal,
           name: data[userId].name,
@@ -48,17 +48,17 @@ const SavedRecipesPage = () => {
 
       setRecipes(fetchedRecipes);
       setLoading(false);
-      
+
     }catch (error){
       setError(error.message);
       setLoading(false);
-    }  
-  }; 
+    }
+  };
 
 
   const deleteRecipeHandler = async () => {
-    
-    const response = await fetch(  
+
+    const response = await fetch(
         'https://myfoodrecipes-1cfe5-default-rtdb.europe-west1.firebasedatabase.app/' + userId + '/recipes/.json',
         {
           method:'DELETE',
@@ -66,7 +66,7 @@ const SavedRecipesPage = () => {
             'Content-Type': 'application/json',
           },
         });
-        
+
       await response.json();
     };
 
@@ -83,19 +83,18 @@ const SavedRecipesPage = () => {
   }else {
     content = <RecipeList recipes={recipes}/>
   }
-  
+
   return (
     <div>
-      <MainNavigation />   
+      <MainNavigation />
       <button className='search-btn' onClick={deleteRecipeHandler}>
         <>Delete All Recipes</>
-      </button>       
+      </button>
       <div>
         {content}
-      </div>      
+      </div>
     </div>
-  )  
-  }; 
+  )
+  };
 
-  export default SavedRecipesPage;
-  
+  export default SavedRecipesPage;*/

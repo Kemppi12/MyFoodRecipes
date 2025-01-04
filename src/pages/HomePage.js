@@ -1,88 +1,59 @@
-import "../components/App.css";
-import { useState , useEffect } from "react";
-import RecipeList from "../components/RecipeList";
+import { useState, useEffect } from "react";
+import MealList from "../components/MealList";
 import MainNavigation from "../components/MainNavigation";
-import SearchBar from "../components/SearchBar";
 
+const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s=';
 
-const apiUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='
-
-const Homepage = () => {
-
-  const [recipes, setRecipes] = useState([]);
+const App = () => {
+  const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
-  const fetchRecipesHandler = async () => {
-
+  const fetchMealsHandler = async () => {
     const url = apiUrl + query;
 
-    try{
+    try {
       setLoading(true);
-      const response = await fetch (url);
-      console.log(response)
+      const response = await fetch(url);
 
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error("Something went wrong!");
       }
 
-      const data = await response.json();   
+      const data = await response.json();
 
-      const transformedRecipes = data.meals.map((recipeData) => {
-        return {
-          id:recipeData.idMeal,
-          idMeal:recipeData.idMeal, 
-          name:recipeData.strMeal,
-          category:recipeData.strCategory,
-          area:recipeData.strArea,
-          instructions:recipeData.strInstructions,
-          image:recipeData.strMealThumb,
-        }
-      })
-      setRecipes(transformedRecipes);
+      setMeals(data.meals || []); // Set meals or an empty array if no results
       setLoading(false);
-      console.log(data)
-    }catch (error){
+    } catch (error) {
       setError(error.message);
       setLoading(false);
     }
-
-  }; 
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    fetchRecipesHandler()
   };
 
   useEffect(() => {
-    fetchRecipesHandler();
-  },[]);
-
-  let content;
-
-  if(loading){
-    content = <p>Loading....</p>;
-  }else if(error){
-    content = <p>{error}</p>;
-  }else {
-    content = <RecipeList recipes={recipes}/>;
-  }
+    fetchMealsHandler();
+  }, []);
 
   return (
     <div>
       <MainNavigation />
-      <SearchBar
-        handleSubmit={handleSubmit}
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        loading={loading}
-      />       
       <div>
-        {content}     
-      </div>    
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for a meal"
+        />
+        <button onClick={fetchMealsHandler}>Search</button>
+      </div>
+      <div>
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {!loading && !error && <MealList meals={meals} />}
+      </div>
     </div>
-  )
-  }; 
+  );
+};
 
-  export default Homepage;
+export default App;
