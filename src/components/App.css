@@ -9,11 +9,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.recipe-list {
+.meal-list {
     padding: 0 10px 30px 10px;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 330px));
-    
+
 }
 
 .header {
@@ -24,7 +24,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 10px 100px;
-    grid-column: 1/-1; 
+    grid-column: 1/-1;
 }
 
 .header h1 {
@@ -32,7 +32,7 @@
     font-size: 50px;
     letter-spacing: 7px;
     margin-bottom: 10px;
-    text-align: left;  
+    text-align: left;
 }
 
 .header h2 {
@@ -59,7 +59,7 @@
     font-size: 30px;
     font-weight: 600px;
     border-radius: 5px;
-    width: 120px;  
+    width: 120px;
 }
 
 .header button:hover,
@@ -74,7 +74,7 @@
     text-align:right;
     text-decoration: none;
     text-emphasis-color: black;
-    color: orangered; 
+    color: orangered;
 }
 
 .header a:hover,
@@ -84,7 +84,7 @@
 }
 
 
-.recipe {
+.meal {
     display: grid;
     position: relative;
     grid-template-rows: auto 1fr;
@@ -92,7 +92,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,3);
 }
 
-.recipe-image {
+.meal-image {
     position: relative;
     width: 100%;
     border-radius: 15px 15px 0 0;
@@ -103,30 +103,30 @@
     text-align: center;
 }
 
-.recipe-details {
+.meal-details {
     padding: 20px 10px;
     display: grid;
     grid-template-rows:auto 1fr 50px;
     grid-row-gap: 15px;
 }
 
-.recipe-details-sub {
+.meal-details-sub {
     display: grid;
     grid-template-columns: auto auto;
 }
 
-.recipe-details-sub h4 {
+.meal-details-sub h4 {
     font-weight: 600;
     font-size: 30px;
 }
 
-.recipe-details-sub h5 {
+.meal-details-sub h5 {
     font-weight: 600px;
     font-size: 40px;
     color: rgb(255, 0, 128);
 }
 
-.recipe-details a {
+.meal-details a {
     color: orangered;
     font-size: 28px;
     line-height: 28px;
@@ -134,7 +134,7 @@
     align-self: stretch;
 }
 
-.recipe-details button {
+.meal-details button {
     background-color: orangered;
     border: none;
     color: azure;
@@ -160,7 +160,7 @@
 }
 
 .search-input:focus {
-    outline: none;   
+    outline: none;
 }
 
 .search-form-control {
@@ -180,13 +180,13 @@
     margin: 0 1rem;
     margin-bottom: 20px;
 }
-  
+
 .search-btn:hover {
     background-color: orangered;
     border-color: orangered;
     border: 1px solid black;
 }
-  
+
 
 .modal {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
